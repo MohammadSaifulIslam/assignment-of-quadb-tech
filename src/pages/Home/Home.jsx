@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import ShowCard from "../components/ShowCard/ShowCard";
+import ShowCard from "../../components/Cards/ShowCard/ShowCard";
 
 const Home = () => {
     const [showsData, setShowsData] = useState([]);

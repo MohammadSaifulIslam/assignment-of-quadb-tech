@@ -7,14 +7,16 @@ const ShowCard = ({ showData }) => {
         <Card>
             <Card.Img variant="top" src={showData?.show?.image?.medium} />
             <Card.Body>
-                <Card.Title>{showData?.show?.name}</Card.Title>
+                <Card.Title><h2>{showData?.show?.name}</h2></Card.Title>
                 <>
                     <div className='d-flex justify-content-between'>
-                        <p>Score : {showData.score.toFixed(1)}</p>
-                        <p>Watch Time : {showData.show.averageRuntime > 0 ? showData.show.averageRuntime : 0}</p>
+                        <p><span className="fw-medium">Score:</span> {showData?.score?.toFixed(1)}</p>
+                        <p><span className="fw-medium">Watch Time: </span>
+                            {showData.show?.averageRuntime > 0 ? showData.show?.averageRuntime : 0}min
+                        </p>
                     </div>
                 </>
-                <Link to={'/show-details'}><Button variant="primary">View Details</Button></Link>
+                <Link to={`/show-details/${showData.show.id}`}><Button variant="primary">View Details</Button></Link>
             </Card.Body>
         </Card>
     );
