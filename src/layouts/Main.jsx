@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 import NavBar from "../components/Navbar/NavBar";
 
@@ -7,6 +8,7 @@ const Main = () => {
             <NavBar />
             <ScrollRestoration />
             <Outlet />
+            <Toaster />
         </div>
     );
 };

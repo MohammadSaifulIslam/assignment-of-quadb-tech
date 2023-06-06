@@ -1,4 +1,5 @@
 import { Button, Form, Modal } from "react-bootstrap";
+import { toast } from "react-hot-toast";
 import { addToDb } from "../../utility/localstorage";
 
 const BookingFormModal = (props) => {
@@ -14,6 +15,7 @@ const BookingFormModal = (props) => {
         const bookingData = {id: data?.show?.id , image: data?.show?.image?.medium, show_name, ticket_quantity : parseInt(ticket_quantity)}
         addToDb(bookingData)
         props.onHide();
+        toast.success('Your Ticket is Successfully! Booked')
     }
     return (
         <Modal

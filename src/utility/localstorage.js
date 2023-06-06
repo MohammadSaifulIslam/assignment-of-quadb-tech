@@ -5,12 +5,18 @@ const addToDb = (bookingData) => {
   const previousCart = JSON.parse(localStorage.getItem("bookings"));
 
   if (previousCart) {
-    previousCart.push(bookingData);
-    bookingCart = previousCart;
+    const isExist = previousCart.find(
+      (booking) => booking.id === bookingData.id
+    );
+    if (isExist) {
+      return;
+    } else {
+      previousCart.push(bookingData);
+      bookingCart = previousCart;
+    }
   } else {
     bookingCart.push(bookingData);
   }
-
   localStorage.setItem("bookings", JSON.stringify(bookingCart));
 };
 
@@ -29,12 +35,12 @@ const getDataFromDb = () => {
 
 // remove a scacific item from localstorage
 const removeItemFromDb = (id) => {
-  console.log(id)
+  console.log(id);
   const storedCart = JSON.parse(localStorage.getItem("bookings"));
 
   if (storedCart) {
     const filterRemoveItem = storedCart.filter((booking) => booking.id !== id);
-    if(filterRemoveItem){
+    if (filterRemoveItem) {
       localStorage.setItem("bookings", JSON.stringify(filterRemoveItem));
     }
   }
