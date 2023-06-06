@@ -5,14 +5,15 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
     return (
         <>
             {[false].map((expand) => (
-                <Navbar key={expand} bg="light" expand={expand} className="mb-3 py-4">
+                <Navbar key={expand} bg="light" expand={expand} className="mb-3 py-3">
                     <Container >
-                        <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
+                        <Navbar.Brand className='text-primary fw-bold fs-2 '><Link className='link-underline-opacity-0 link-underline ' to={'/'}>Movie Zone</Link></Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}

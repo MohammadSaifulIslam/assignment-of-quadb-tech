@@ -1,11 +1,12 @@
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import NavBar from "../components/Navbar/NavBar";
-import Home from "../pages/Home";
 
 const Main = () => {
     return (
         <div>
-            <NavBar/>
-            <Home />
+            <NavBar />
+            <ScrollRestoration />
+            <Outlet />
         </div>
     );
 };
