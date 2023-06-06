@@ -1,4 +1,5 @@
 import { Button, Form, Modal } from "react-bootstrap";
+import { addToDb } from "../../utility/localstorage";
 
 const BookingFormModal = (props) => {
     const { data } = props;
@@ -7,12 +8,11 @@ const BookingFormModal = (props) => {
     const handleBookTicket = event =>{
         event.preventDefault();
         const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
         const show_name = form.show_name.value;
         const ticket_quantity = form.ticket_quantity.value;
 
-        console.log(show_name, ticket_quantity)
+        const bookingData = {id: data?.show?.id , image: data?.show?.image?.medium, show_name, ticket_quantity : parseInt(ticket_quantity)}
+        addToDb(bookingData)
         props.onHide();
     }
     return (
