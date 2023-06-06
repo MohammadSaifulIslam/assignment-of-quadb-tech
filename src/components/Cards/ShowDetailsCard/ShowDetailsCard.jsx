@@ -1,6 +1,10 @@
+import { useState } from "react";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import BookingFormModal from "../../BookingFormModal/BookingFormModal";
 
 const ShowDetailsCard = ({ showDetailsData }) => {
+    const [modalShow, setModalShow] = useState(false);
     return (
         <div>
             <div className="card mb-3 px-4">
@@ -40,7 +44,21 @@ const ShowDetailsCard = ({ showDetailsData }) => {
                             {
                                 showDetailsData.show?.status === "Ended" ?
                                     <Link to={'/'}> <button className="btn btn-primary">Back To Home</button></Link>
-                                    : <button className="btn btn-primary">Book A Ticket</button>
+                                    :
+                                    // modal with form
+                                    <>
+                                        <Button variant="primary" onClick={() => setModalShow(true)}>
+                                            Book A Ticket
+                                        </Button>
+
+                                        <BookingFormModal
+                                            data={showDetailsData}
+                                            show={modalShow}
+                                            onHide={() => setModalShow(false)}
+                                        >
+
+                                        </BookingFormModal>
+                                    </>
                             }
 
                         </div>
