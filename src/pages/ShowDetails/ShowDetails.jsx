@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import ShowDetailsCard from "../../components/Cards/ShowDetailsCard/ShowDetailsCard";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const ShowDetails = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const [showDetailsData, setShowDetailsData] = useState({});
     const { id } = useParams();
 
@@ -13,14 +15,16 @@ const ShowDetails = () => {
             .then(resData => {
                 const findData = resData.find(data => data.show.id === parseInt(id))
                 setShowDetailsData(findData)
+                setIsLoading(false);
             })
     }, [id])
 
-    console.log(showDetailsData)
-    console.log(id)
+    if (isLoading) {
+        return <LoadingSpinner />
+    }
     return (
         <Container className="my-5">
-            <ShowDetailsCard showDetailsData={showDetailsData}/>
+            <ShowDetailsCard showDetailsData={showDetailsData} />
         </Container>
     );
 };
