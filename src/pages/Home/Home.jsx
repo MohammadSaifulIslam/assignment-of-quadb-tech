@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import ShowCard from "../../components/Cards/ShowCard/ShowCard";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const Home = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const [showsData, setShowsData] = useState([]);
     const [seeMore, setSeeMore] = useState(false)
     useEffect(() => {
@@ -10,8 +12,13 @@ const Home = () => {
             .then(res => res.json())
             .then(resData => {
                 seeMore ? setShowsData(resData) : setShowsData(resData.slice(0, 6))
+                setIsLoading(false)
             })
     }, [seeMore])
+
+    if (isLoading) {
+        return <LoadingSpinner />
+    }
     return (
         <Container>
             <Row xs={1} md={2} lg={3} className="g-4 my-5">

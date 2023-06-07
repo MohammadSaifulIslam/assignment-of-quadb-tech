@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link, NavLink } from 'react-router-dom';
-
+import './NavBar.css';
 const NavBar = () => {
     return (
         <>
@@ -25,9 +25,9 @@ const NavBar = () => {
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
-                                <Nav className="justify-content-end flex-grow-1 pe-3">
-                                    <NavLink to={'/'}>Home</NavLink>
-                                    <NavLink to={'/my-bookings'}>My Bookings</NavLink>
+                                <Nav className="justify-content-end flex-grow-1 pe-3 text-dark link-underline link-underline-opacity-0">
+                                    <NavLink className={({ isActive }) => isActive ? "text-primary link-underline link-underline-opacity-0" : "text-dark link-underline link-underline-opacity-0"} to={'/'}>Home</NavLink>
+                                    <NavLink className={({ isActive }) => isActive ? "text-primary link-underline link-underline-opacity-0" : "text-dark link-underline link-underline-opacity-0"} to={'/my-bookings'}>My Bookings</NavLink>
                                 </Nav>
                                 <Form className="d-flex mt-4">
                                     <Form.Control

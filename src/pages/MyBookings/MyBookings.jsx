@@ -27,7 +27,8 @@ const MyBookings = () => {
     }
     return (
         <Container>
-            <div className="w-50 mx-auto my-5">
+           <div className="row">
+           <div className="col-sm-12 col-md-6 mx-auto my-5">
                 {
                     bookingsData.length > 0 ? bookingsData.map(booking => <div key={booking.id}>
                         <div className="d-flex justify-content-between align-items-center gap-3 mb-3">
@@ -45,6 +46,7 @@ const MyBookings = () => {
                         </div>
                 }
             </div>
+           </div>
         </Container>
     );
 };
